@@ -5,27 +5,31 @@ import PostList from './PostsList';
 
 export default class App extends React.Component {
   state = {
-    posts: {},
+    posts: null,
     loading: true,
   };
 
   componentDidMount() {
-    if (this.props.match.path === '/new') this.getPosts('new');
-    else this.getPosts('top');
+    this.getPosts();
   }
 
-  getPosts = (props) => {
-    if (!this.state.posts['top']) {
-      fetchMainPosts(props).then((data) => {
-        this.setState({
-          posts: {
-            ['top']: data,
-          },
-          loading: false,
-        });
+  componentDidUpdate(prevProps) {
+    if (prevProps.type !== this.props.type) this.getPosts();
+  }
+
+  getPosts() {
+    this.setState({
+      posts: null,
+      loading: true,
+    });
+
+    fetchMainPosts(this.props.type).then((data) => {
+      this.setState({
+        posts: data,
+        loading: false,
       });
-    }
-  };
+    });
+  }
 
   render() {
     const { posts, loading } = this.state;
@@ -34,6 +38,6 @@ export default class App extends React.Component {
       return <Loading />;
     }
 
-    return <div>{posts['top'] && <PostList posts={posts['top']} />}</div>;
+    return <div>{posts && <PostList posts={posts} />}</div>;
   }
 }

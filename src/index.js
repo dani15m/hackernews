@@ -30,8 +30,8 @@ class Index extends React.Component {
                 <Nav />
                 <React.Suspense fallback={<Loading />}>
                   <Switch>
-                    <Route exact path='/' component={App} />
-                    <Route path='/new' component={App} />
+                    <Route exact path='/' render={() => <App type='top' />} />
+                    <Route path='/new' render={() => <App type='new' />} />
                     <Route path='/user' component={Author} />
                     <Route path='/post' component={Post} />
                     <Route render={() => <h1>404</h1>} />
