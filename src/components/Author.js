@@ -3,10 +3,9 @@ import { fetchPosts, fetchUser } from '../utils/api';
 import Loading from './Loading';
 import PostList from './PostsList';
 import queryString from 'query-string';
-import { toHaveStyle } from '@testing-library/jest-dom/dist/matchers';
 
 function Description({ user }) {
-  const { about, id, created, karma, submitted } = user;
+  const { about, id, created, karma } = user;
   let date = new Date(created * 1000);
   date = date.toLocaleTimeString([], {
     year: 'numeric',

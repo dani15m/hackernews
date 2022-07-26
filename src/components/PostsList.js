@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import queryString from 'query-string';
 
 export default function PostList({ posts }) {
   return (

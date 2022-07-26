@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Nav from './components/Nav';
 import Loading from './components/Loading';
-import { ThemeConsumer, ThemeProvider } from './contexts/theme';
+import { ThemeProvider } from './contexts/theme';
 
 const App = React.lazy(() => import('./components/App'));
 const Author = React.lazy(() => import('./components/Author'));

@@ -1,6 +1,5 @@
 import React from 'react';
 import { fetchComments, fetchItem } from '../utils/api';
-import PostList from './PostsList';
 import queryString from 'query-string';
 import { Link } from 'react-router-dom';
 import Loading from './Loading';
