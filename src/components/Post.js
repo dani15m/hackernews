@@ -105,11 +105,9 @@ export default class Post extends React.Component {
   render() {
     return (
       <div>
-        {!this.state.item.kids && <Loading text='Fetching post' />}
-        {this.state.item.kids && this.getComments() && (
-          <Content item={this.state.item} />
-        )}
-        {this.state.item.kids && <Content item={this.state.item} />}
+        {!this.state.item && <Loading text='Fetching post' />}
+        {this.state.item && <Content item={this.state.item} />}
+        {this.state.item.kids && this.getComments()}
         {!this.state.comments[0] && this.state.item.kids && (
           <Loading text='Fetching comments' />
         )}
